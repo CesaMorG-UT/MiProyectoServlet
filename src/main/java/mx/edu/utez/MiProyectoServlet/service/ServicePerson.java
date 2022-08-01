@@ -44,4 +44,18 @@ public class ServicePerson {
         }
         return result;
     }
+
+    public ResultAction deletePerson(Long id){
+        ResultAction result = new ResultAction();
+        if (daoPerson.deletePerson(id)) {
+            result.setResult(true);
+            result.setMessage("Persona Eliminada Correctamente");
+            result.setStatus(200);
+        }else {
+            result.setResult(false);
+            result.setMessage("Error al Eliminar Persona");
+            result.setStatus(400);
+        }
+        return result;
+    }
 }

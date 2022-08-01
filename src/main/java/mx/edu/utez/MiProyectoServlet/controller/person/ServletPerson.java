@@ -34,7 +34,7 @@ public class ServletPerson extends HttpServlet {
        switch (action){
            case "/getPersons":
                List<BeanPerson> personList = servicePerson.showPersons();
-               System.out.println(personList.size());
+               //System.out.println(personList.size());
                request.setAttribute("personList", personList);
                urlRedirect="/WEB-INF/view/person/indexPerson.jsp";
                break;
@@ -107,6 +107,15 @@ public class ServletPerson extends HttpServlet {
                 urlRedirect="/getPersons?result="+
                         result2.isResult() + "&message=" + result2.getMessage()
                         + "&status=" +result2.getStatus();
+                break;
+            case "/deletePerson":
+                String id2 = request.getParameter("idP");
+                id2 = (id2==null)?"0":id2;
+                //System.out.println("ID PERSONA -> "+id2);
+                ResultAction result3 = servicePerson.deletePerson(Long.parseLong(id2));
+                urlRedirect="/getPersons?result="+
+                        result3.isResult() + "&message=" + result3.getMessage()
+                        + "&status=" +result3.getStatus();
                 break;
             default:
                 urlRedirect="/getPersons";

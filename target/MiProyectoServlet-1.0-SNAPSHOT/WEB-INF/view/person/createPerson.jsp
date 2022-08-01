@@ -62,6 +62,24 @@
                                 <div class="form-group mb-3">
                                     <div class="row">
                                         <div class="col">
+                                            <label for="birthday" class="fw-bold">Fecha Nacimiento</label>
+                                            <input type="date" class="form-control" name="birthday" id="birthday" required>
+                                            <div class="invalid-feedback">
+                                                Campo Obligatorio
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <label for="image" class="fw-bold">Foto Perfil</label>
+                                            <input type="file" class="form-control" name="image" id="image" required>
+                                            <div class="invalid-feedback">
+                                                Campo Obligatorio
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <div class="row">
+                                        <div class="col">
                                             <label for="email" class="fw-bold">Correo Electronico</label>
                                             <input type="text" class="form-control" name="email" id="email" required>
                                             <div class="invalid-feedback">

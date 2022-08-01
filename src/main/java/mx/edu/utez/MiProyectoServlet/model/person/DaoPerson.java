@@ -22,6 +22,7 @@ public class DaoPerson {
     private final String FIND_PERSON = "SELECT * FROM person WHERE id = ?";
     private final String UPDATE_PERSON = "UPDATE person SET name = ?, lastname = ?, age = ?, email = ?, phone = ?" +
             "WHERE id = ?";
+    private final String DELETE_PERSON = "DELETE FROM person WHERE id = ?";
 
     public List<BeanPerson> showPersons (){
         List<BeanPerson> personList = new LinkedList<>();
@@ -111,6 +112,22 @@ public class DaoPerson {
         }catch (SQLException e){
             Logger.getLogger(DaoPerson.class.getName())
                     .log(Level.SEVERE, "Error updatePerson -> ", e);
+            return false;
+        } finally {
+            closeConnections();
+        }
+    }
+
+    public boolean deletePerson(Long id){
+        try {
+            conn = new MySQLConnection().getConnection();
+            String query = DELETE_PERSON;
+            pstm = conn.prepareStatement(query);
+            pstm.setLong(1, id);
+            return pstm.executeUpdate()==1; //1==1
+        }catch (SQLException e){
+            Logger.getLogger(DaoPerson.class.getName())
+                    .log(Level.SEVERE, "Error deletePerson -> ", e);
             return false;
         } finally {
             closeConnections();
