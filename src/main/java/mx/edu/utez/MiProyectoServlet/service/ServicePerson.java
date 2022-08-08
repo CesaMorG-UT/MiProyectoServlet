@@ -4,6 +4,7 @@ import mx.edu.utez.MiProyectoServlet.model.person.BeanPerson;
 import mx.edu.utez.MiProyectoServlet.model.person.DaoPerson;
 import mx.edu.utez.MiProyectoServlet.utils.ResultAction;
 
+import java.io.InputStream;
 import java.util.List;
 
 public class ServicePerson {
@@ -13,9 +14,9 @@ public class ServicePerson {
         return daoPerson.showPersons();
     }
 
-    public ResultAction savePerson(BeanPerson person){
+    public ResultAction savePerson(BeanPerson person, InputStream image){
         ResultAction result = new ResultAction();
-        if (daoPerson.savePerson(person)) {
+        if (daoPerson.savePerson(person, image)) {
             result.setResult(true);
             result.setMessage("Persona Registrada Correctamente");
             result.setStatus(200);

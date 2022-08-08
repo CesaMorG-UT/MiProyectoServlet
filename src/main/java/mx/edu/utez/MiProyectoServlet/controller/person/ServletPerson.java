@@ -8,6 +8,10 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.io.InputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @WebServlet(name = "ServletPerson",
@@ -19,6 +23,7 @@ import java.util.List;
                 "/updatePerson",
                 "/deletePerson"
         })
+@MultipartConfig(maxFileSize = 1024*1024*100)
 
 public class ServletPerson extends HttpServlet {
 
@@ -75,17 +80,37 @@ public class ServletPerson extends HttpServlet {
                 String email = request.getParameter("email");
                 String phone = request.getParameter("phone");
 
+                String birthday = request.getParameter("birthday");
+                Part filePart = request.getPart("image");
+                InputStream image = filePart.getInputStream();
+
+                String username = request.getParameter("username");
+                String password = request.getParameter("password");
+                String role = request.getParameter("role");
+                System.out.println(username+" "+password+" "+role);
+
+                try {
                 BeanPerson person = new BeanPerson();
                 person.setName(name);
                 person.setLastname(lastname);
                 person.setAge(Integer.parseInt(age));
                 person.setEmail(email);
                 person.setPhone(phone);
+                Date birthdaySDF = new SimpleDateFormat("yyyy-MM-dd").parse(birthday);
+                person.setBirthday(birthdaySDF);
 
-                ResultAction result = servicePerson.savePerson(person);
-                urlRedirect="/getPersons?result="+
-                result.isResult() + "&message=" + result.getMessage()
-                + "&status=" +result.getStatus();
+                person.setUsername(username);
+                person.setPassword(password);
+                person.setRole(role);
+
+                    ResultAction result = servicePerson.savePerson(person, image);
+                    urlRedirect="/getPersons?result="+
+                            result.isResult() + "&message=" + result.getMessage()
+                            + "&status=" +result.getStatus();
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
                 break;
             case "/updatePerson":
                 String name2 = request.getParameter("name");

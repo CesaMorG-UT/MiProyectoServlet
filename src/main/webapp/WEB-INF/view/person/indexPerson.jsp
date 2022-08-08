@@ -37,6 +37,8 @@
                             <th>Perfil</th>
                             <th>Nombre</th>
                             <th>Apellido</th>
+                            <th>Usuario</th>
+                            <th>Rol</th>
                             <th>Edad</th>
                             <th>Fecha Nacimiento</th>
                             <th>Correo</th>
@@ -48,12 +50,14 @@
                         <c:forEach items="${personList}" var="person" varStatus="status">
                             <tr>
                                 <th><c:out value="${status.count}"></c:out></th>
-                                <td><img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle" style="width: 80px;"
+                                <td><img src="data:image/jpeg;base64, ${person.image}" class="rounded-circle" style="width: 80px;"
                                          alt="Avatar" /></td>
                                 <td><c:out value="${person.name}"></c:out></td>
                                 <td><c:out value="${person.lastname}"></c:out></td>
+                                <td><c:out value="${person.username}"></c:out></td>
+                                <td><c:out value="${person.role}"></c:out></td>
                                 <td><c:out value="${person.age}"></c:out></td>
-                                <td>29/11/1993</td>
+                                <td><fmt:formatDate value="${person.birthday}" pattern="dd/MM/yyyy"/></td>
                                 <td><c:out value="${person.email}"></c:out></td>
                                 <td><c:out value="${person.phone}"></c:out></td>
                                 <td>

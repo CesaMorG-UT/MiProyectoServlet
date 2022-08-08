@@ -22,7 +22,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12">
-                            <form name="registerPerson" class="needs-validation" novalidate action="savePerson" method="post">
+                            <form name="registerPerson" class="needs-validation" novalidate action="savePerson" method="post" enctype="multipart/form-data">
                                 <div class="form-group mb-3">
                                     <div class="row">
                                         <div class="col">
@@ -85,6 +85,37 @@
                                             <div class="invalid-feedback">
                                                 Campo Obligatorio
                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr style="height:2px"; width:100%; border-width:0; color=gray; background-color:gray;>
+                                <div class="form-group mb-3">
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="username" class="fw-bold">Usuario</label>
+                                            <input type="text" class="form-control" name="username" id="username" required>
+                                            <div class="invalid-feedback">
+                                                Campo Obligatorio
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <label for="password" class="fw-bold">Contraseña</label>
+                                            <input type="password" class="form-control" name="password" id="password" required>
+                                            <div class="invalid-feedback">
+                                                Campo Obligatorio
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="role" class="fw-bold">Rol</label>
+                                            <select name="role" id="role" class="form-select" aria-label="Default select example">
+                                                <option selected>Selecciona un Rol...</option>
+                                                <option value="admin">Administrador</option>
+                                                <option value="user">Usuario</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
