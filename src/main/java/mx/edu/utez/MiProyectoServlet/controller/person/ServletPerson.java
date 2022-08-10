@@ -1,7 +1,7 @@
 package mx.edu.utez.MiProyectoServlet.controller.person;
 
 import mx.edu.utez.MiProyectoServlet.model.person.BeanPerson;
-import mx.edu.utez.MiProyectoServlet.service.ServicePerson;
+import mx.edu.utez.MiProyectoServlet.service.person.ServicePerson;
 import mx.edu.utez.MiProyectoServlet.utils.ResultAction;
 
 import javax.servlet.*;

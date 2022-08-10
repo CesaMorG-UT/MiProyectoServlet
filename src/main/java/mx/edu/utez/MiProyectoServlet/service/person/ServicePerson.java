@@ -1,4 +1,4 @@
-package mx.edu.utez.MiProyectoServlet.service;
+package mx.edu.utez.MiProyectoServlet.service.person;
 
 import mx.edu.utez.MiProyectoServlet.model.person.BeanPerson;
 import mx.edu.utez.MiProyectoServlet.model.person.DaoPerson;

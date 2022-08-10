@@ -1,4 +1,6 @@
 <%@ page pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Navbar</a>
@@ -28,9 +30,10 @@
                     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                 </li>
             </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+            <img src="data:image/jpeg;base64, ${login.image}" style="width: 35px; height: 35px"/>&nbsp
+            <p><c:out value="${login.fulname}"/></p>&nbsp
+            <form class="d-flex" action="logout">
+                <button class="btn btn-outline-success" type="submit">Cerrar Sesion</button>
             </form>
         </div>
     </div>
