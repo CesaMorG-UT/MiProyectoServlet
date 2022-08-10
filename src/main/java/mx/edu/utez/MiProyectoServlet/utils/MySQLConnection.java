@@ -30,7 +30,7 @@ public class MySQLConnection {
         Connection conn = new MySQLConnection().getConnection();
         if (conn != null) {
             try {
-                System.out.println("Conexión realizada :)");
+                System.out.println("Conexión realizada :) HOLIII!");
                 conn.close();
             }catch (SQLException e){
                 System.out.println(e);
