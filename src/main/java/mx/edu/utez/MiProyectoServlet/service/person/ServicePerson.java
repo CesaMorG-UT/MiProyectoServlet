@@ -2,6 +2,7 @@ package mx.edu.utez.MiProyectoServlet.service.person;
 
 import mx.edu.utez.MiProyectoServlet.model.person.BeanPerson;
 import mx.edu.utez.MiProyectoServlet.model.person.DaoPerson;
+import mx.edu.utez.MiProyectoServlet.utils.EmailUtility;
 import mx.edu.utez.MiProyectoServlet.utils.ResultAction;
 
 import java.io.InputStream;
@@ -17,6 +18,8 @@ public class ServicePerson {
     public ResultAction savePerson(BeanPerson person, InputStream image){
         ResultAction result = new ResultAction();
         if (daoPerson.savePerson(person, image)) {
+            new EmailUtility().sendEmail(
+                    person.getEmail(), person.getName(), person.getLastname());
             result.setResult(true);
             result.setMessage("Persona Registrada Correctamente");
             result.setStatus(200);

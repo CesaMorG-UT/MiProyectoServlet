@@ -88,7 +88,7 @@ public class ServletPerson extends HttpServlet {
                 String password = request.getParameter("password");
                 String role = request.getParameter("role");
                 System.out.println(username+" "+password+" "+role);
-
+// deport //h 16 //a 3 //d 4
                 try {
                 BeanPerson person = new BeanPerson();
                 person.setName(name);
